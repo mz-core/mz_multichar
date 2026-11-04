@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MZ Personagens</title>
+  </head>
+  <body>
+    <main id="app" class="hidden" aria-live="polite">
+      <div class="scene-shade scene-shade-left" aria-hidden="true"></div>
+      <div class="scene-shade scene-shade-right" aria-hidden="true"></div>
+
+      <section class="roster-shell">
+        <header class="brand-block">
+          <p id="brand-name" class="eyebrow">MZ_CORE</p>
+          <h1>Escolha seu <span>personagem</span></h1>
+          <p id="roster-status" class="roster-status"></p>
+        </header>
+        <div id="characters" class="characters"></div>
+        <div id="empty" class="empty hidden">
+          <strong>Sua história começa aqui.</strong>
+          <span>Crie seu primeiro personagem para entrar na cidade.</span>
+        </div>
+        <button id="create" class="create-card" type="button">
+          <span class="create-icon">+</span>
+          <span
+            ><strong>Criar personagem</strong
+            ><small>Começar uma nova história</small></span
+          >
+        </button>
+      </section>
+
+      <aside id="details" class="details hidden">
+        <p class="eyebrow">PERSONAGEM SELECIONADO</p>
+        <h2 id="selected-name">Sem nome</h2>
+        <p id="selected-id" class="selected-id"></p>
+        <dl>
+          <div>
+            <dt>Nascimento</dt>
+            <dd id="selected-birthdate">—</dd>
+          </div>
+          <div>
+            <dt>Gênero</dt>
+            <dd id="selected-gender">—</dd>
+          </div>
+          <div>
+            <dt>Nacionalidade</dt>
+            <dd id="selected-nationality">—</dd>
+          </div>
+          <div>
+            <dt>Telefone</dt>
+            <dd id="selected-phone">—</dd>
+          </div>
+        </dl>
+        <button id="enter" class="enter-button" type="button">
+          Entrar na cidade
+        </button>
+        <p class="focus-hint">
+          Clique novamente no personagem para voltar à câmera cinematográfica.
+        </p>
+      </aside>
+
+      <section id="error-box" class="error-box hidden" role="alert">
+        <strong>Não foi possível carregar a seleção.</strong>
+        <span id="error"></span>
+        <button id="retry" type="button">Tentar novamente</button>
+      </section>
+
+      <footer class="scene-footer">
+        <span class="pulse"></span>
+        <span id="cinematic-status">CÂMERA CINEMATOGRÁFICA</span>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
