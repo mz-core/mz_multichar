@@ -120,7 +120,8 @@ lib.callback.register('mz_multichar:server:getState', function(source)
       return exports['mz_core']:GetPendingCharacterSnapshot(source)
     end)
     if pendingOk and pending then
-      pcall(function() exports['mz_creator']:OpenCreator(source, 'multichar_create') end)
+      local creatorOk, opened = pcall(function() return exports['mz_creator']:OpenCreator(source, 'multichar_create') end)
+      if not creatorOk or opened ~= true then return { ok = false, error = 'creator_unavailable' } end
       return { ok = true, data = { creating = true, lifecycle = roster.lifecycle } }
     end
   end
@@ -166,7 +167,6 @@ lib.callback.register('mz_multichar:server:create', function(source, payload)
     return exports['mz_creator']:OpenCreator(source, 'multichar_create')
   end)
   if not creatorOk or opened ~= true then
-    pcall(function() exports['mz_core']:CancelPendingCharacter(source) end)
     return { ok = false, error = 'creator_unavailable' }
   end
   return { ok = true, data = draft }
